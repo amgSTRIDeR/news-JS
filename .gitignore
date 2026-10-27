@@ -1,3 +1,7 @@
 node_modules
 dist
 .env
+.idea
+docker-compose.dev.yml
+Dockerfile.dev
+.devcontainer
