@@ -3,6 +3,11 @@ export interface RequestOptions {
     options?: Record<string, string | undefined>;
 }
 
+enum RequestMethod {
+    GET = 'GET',
+    POST = 'POST',
+}
+
 class Loader {
     constructor(private baseLink: string | undefined, private options: Record<string, string | undefined>) {
     }
@@ -13,7 +18,7 @@ class Loader {
             console.error('No callback for GET response');
         }
     ) {
-        this.load('GET', endpoint, callback, options);
+        this.load(RequestMethod.GET, endpoint, callback, options);
     }
 
     errorHandler(res: Response) {
@@ -37,7 +42,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load<T>(method: string, endpoint: string, callback: (data: T) => void, options = {}) {
+    load<T>(method: RequestMethod, endpoint: string, callback: (data: T) => void, options = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
