@@ -7,7 +7,7 @@
     "scripts": {
         "start": "webpack serve --open --config ./webpack.config.js --env mode=dev",
         "build": "webpack --config ./webpack.config.js --env mode=prod",
-        "lint": "eslint . --ext .ts"
+        "lint": "eslint ."
     },
     "repository": {
         "type": "git",
@@ -18,13 +18,13 @@
     "license": "ISC",
     "homepage": "",
     "devDependencies": {
-        "@eslint/js": "^10.0.1",
+        "@eslint/js": "^8.57.1",
         "@types/node": "^26.6.5",
         "clean-webpack-plugin": "^4.0.0",
         "copy-webpack-plugin": "^12.0.2",
         "css-loader": "^6.10.0",
         "dotenv-webpack": "^8.0.1",
-        "eslint": "^10.13.0",
+        "eslint": "^8.57.1",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-import": "^2.29.1",
         "eslint-plugin-prettier": "^5.1.3",
