@@ -32,7 +32,10 @@ const baseConfig = {
         path: path.resolve(__dirname, './dist'),
     },
     plugins: [
-        new DotenvWebpackPlugin(),
+        new DotenvWebpackPlugin({
+            path: './.env',
+            systemvars: true,
+        }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html',
