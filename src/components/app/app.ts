@@ -3,13 +3,13 @@ import { AppView } from '../view/appView';
 
 export interface Article {
     author: string | null;
-    content: string;
-    description: string;
+    content: string | null;
+    description: string | null;
     publishedAt: string;
     source: Source;
     title: string;
     url: string;
-    urlToImage: string;
+    urlToImage: string | null;
 }
 
 export interface Source {
@@ -17,9 +17,14 @@ export interface Source {
     name: string;
 }
 
-export interface NewsData {
+export interface ArticlesResponse {
     status: string;
+    totalResults?: number;
     articles: Article[];
+}
+
+export interface SourcesResponse {
+    status: string;
     sources: Source[];
 }
 
@@ -32,11 +37,11 @@ export default class App {
         this.view = new AppView();
     }
 
-    start() {
+    start(): void {
         document?.querySelector('.sources')?.addEventListener('click', (e) => {
-                this.controller.getNews(e, (data: NewsData | undefined) => this.view.drawNews(data))
+                this.controller.getNews(e, (data: ArticlesResponse | undefined) => this.view.drawNews(data))
         });
 
-        this.controller.getSources((data: NewsData | undefined) => this.view.drawSources(data));
+        this.controller.getSources((data: SourcesResponse | undefined) => this.view.drawSources(data));
     }
 }
