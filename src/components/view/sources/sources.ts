@@ -31,7 +31,7 @@ class Sources {
         }
 
         document.querySelector('.sources')?.addEventListener('click', (e) => {
-            let target = e.target;
+            const target = e.target;
             let sourceItem;
             if(!(target instanceof HTMLElement)) {
                 return;
